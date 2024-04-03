@@ -43,16 +43,16 @@ npm install
 ```
 
 ## Running the App Locally
-Install an Emulator: First, you need to have an Android emulator installed. I recommend using BlueStacks for its ease of use and comprehensive feature set.
+1. Install an Emulator: First, you need to have an Android emulator installed. I recommend using BlueStacks for its ease of use and comprehensive feature set.
 
-Install Expo Go: Once BlueStacks is set up, navigate to the Google Play Store within the emulator and search for the "Expo Go" app. Install Expo Go, as this will allow you to open and run the project on your emulator.
+2. Install Expo Go: Once BlueStacks is set up, navigate to the Google Play Store within the emulator and search for the "Expo Go" app. Install Expo Go, as this will allow you to open and run the project on your emulator.
 
-Start the Project: Open your terminal in the project directory and execute the following command to start the Expo project:
+3. Start the Project: Open your terminal in the project directory and execute the following command to start the Expo project:
 
 ```bash
 npm start 
 ```
-Access the Project via Expo Go:
+4. Access the Project via Expo Go:
 
 After running the npm start command, a QR code and a link (e.g., exp://192.168.0.113:8081) will be displayed in your terminal.
 Copy the link provided by the terminal output.
