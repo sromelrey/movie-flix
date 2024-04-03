@@ -5,25 +5,30 @@ import { fetchMovies } from "../api";
 
 export default function MovieScreens({ navigation }) {
   const [title, setTitle] = useState([]);
+  const [year, setYear] = useState([]);
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const loadMovies = async (searchQuery) => {
     setIsLoading(true);
-    const data = await fetchMovies(searchQuery);
+    const data = await fetchMovies(`?s=${searchQuery}`);
     setMovies(data || []);
     setIsLoading(false);
   };
 
   const handleSearchMovies = async () => {
     setIsLoading(true);
-    const data = await fetchMovies(title);
-    setMovies(data || []);
+    const searchQuery =
+      year.length > 0 ? `?t=${title}&y=${year}` : `?s=${title}`;
+    const data = await fetchMovies(searchQuery);
+    setMovies(data);
     setIsLoading(false);
   };
-
   const handleMoviesInput = (enteredSearch) => {
     setTitle(enteredSearch);
+  };
+  const handleMoviesYearInput = (enteredSearch) => {
+    setYear(enteredSearch);
   };
   useEffect(() => {
     loadMovies("Batman");
@@ -42,10 +47,11 @@ export default function MovieScreens({ navigation }) {
       <View style={styles.title}>
         <Text style={styles.titleText}>Movie Flix</Text>
       </View>
-      <View style={{ flex: 2, borderWidth: 2, borderColor: "black" }}>
+      <View style={{ flex: 3, borderWidth: 2, borderColor: "black" }}>
         <SearchMovie
           searchMoviesHandler={handleSearchMovies}
           moviesInputHandler={handleMoviesInput}
+          moviesInputYearHandler={handleMoviesYearInput}
         />
       </View>
       <View style={{ flex: 10 }}>
@@ -54,7 +60,7 @@ export default function MovieScreens({ navigation }) {
           data={movies}
           renderItem={renderItem}
           numColumns={2}
-          onMomentumScrollEnd={() => console.log("done")}
+          // onMomentumScrollEnd={() => console.log("done")}
         />
       </View>
     </View>

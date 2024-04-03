@@ -5,6 +5,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 export default function SearchMovies({
   searchMoviesHandler,
   moviesInputHandler,
+  moviesInputYearHandler,
 }) {
   return (
     <View style={styles.contentWrapper}>
@@ -14,15 +15,32 @@ export default function SearchMovies({
           style={styles.textInput}
           onChangeText={moviesInputHandler}
         />
-        <Button
-          icon={<Icon name='search' size={15} color='white' />}
-          onPress={searchMoviesHandler}
+        <TextInput
+          placeholder='Filter by Year'
+          style={styles.textInput}
+          onChangeText={moviesInputYearHandler}
+        />
+        {/* <Button
+          type='solid'
           buttonStyle={{
+            flex: 1,
+            flexDirection: "row",
+            flexBasis: "auto",
             height: 50,
-            width: 50,
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
             borderWidth: 2,
             borderColor: "black",
           }}
+        >
+          Search Movie
+          <Icon name='save' color='white' />
+        </Button> */}
+        <Button
+          icon={<Icon name='search' size={15} color='white' />}
+          onPress={searchMoviesHandler}
+          title='Search Movie'
         />
         {/* <Button title='Search'  /> */}
       </View>
@@ -40,8 +58,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   inputContainer: {
-    marginVertical: 16,
-    flexDirection: "row",
+    flex: 1,
+    flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 24,

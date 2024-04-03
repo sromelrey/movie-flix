@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useLayoutEffect } from "react";
 import { View, StyleSheet, Text, Image } from "react-native";
-import { fetchMoviesById } from "../api";
+import { fetchMovies } from "../api";
 export default function MovieOverviewScreen({ route, navigation }) {
   const { movie } = route.params;
   const [movieDetails, setMovieDetails] = useState([]);
@@ -8,7 +8,7 @@ export default function MovieOverviewScreen({ route, navigation }) {
 
   const loadMovieDetails = async (imdbID) => {
     setIsLoading(true);
-    const data = await fetchMoviesById(imdbID);
+    const data = await fetchMovies(`?i=${imdbID}`);
     setMovieDetails(data || []);
     setIsLoading(false);
   };
